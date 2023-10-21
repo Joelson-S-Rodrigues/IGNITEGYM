@@ -67,6 +67,9 @@ function handleNewAccount() {
             <Input 
             placeholder="Senha"
             secureTextEntry
+            />   
+                <Button title="Acessar"/>
+
             </Center>
            
            <Center mt={24}>
