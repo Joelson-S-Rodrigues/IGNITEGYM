@@ -47,17 +47,6 @@ function handleNewAccount() {
             <Heading color="gray.100" fontFamily="heading" fontSize="xl" mb={6}>
             Acesse a sua conta
             </Heading>  
-            
-            <Heading color="gray.100" fontFamily="heading" fontSize="xl" mb={6}>
-            Acesse a sua conta
-            </Heading>  
-            <Heading color="gray.100" fontFamily="heading" fontSize="xl" mb={6}>
-            Acesse a sua conta
-            </Heading>  
-            <Heading color="gray.100" fontFamily="heading" fontSize="xl" mb={6}>
-            Loren ipsun dolar it amed
-            
-            </Heading>  
 
             <Input 
             keyboardType="email-address"
