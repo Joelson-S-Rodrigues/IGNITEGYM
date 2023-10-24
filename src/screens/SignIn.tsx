@@ -27,6 +27,7 @@ export function SignIn() {
         <Image
           alt="Pessoas treinando na academia"
           position="absolute"
+          defaultSource={BackgroundImg}
           source={BackgroundImg}
           resizeMode="contain"
         />
