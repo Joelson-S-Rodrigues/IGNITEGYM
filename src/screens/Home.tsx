@@ -1,12 +1,16 @@
 import { useState } from 'react'
 
 import { Group } from '@components/Group';
-import { FlatList,  HStack,  Heading,  Text,  VStack } from 'native-base';
 import { HomeHeader } from '@components/HomeHeader';
+import { ExerciseCard } from '@components/ExerciseCard';
+
+import { FlatList,  HStack,  Heading,  Text,  VStack } from 'native-base';
+
 
 export function Home() {
   const [groups, setGroups ] = useState(['Costas', 'Biceps', 'Triceps', 'Ombro']);
-  const [groupSelected, setGroupSelected ] = useState("ombro");
+  const [exercises, setExercises ] = useState(['Puxada frontal', 'Remada curvada', 'Remada unilateral', 'Levantamento terra']);
+  const [groupSelected, setGroupSelected ] = useState("Costas");
 
     return (
         <VStack flex={1}>
@@ -14,11 +18,11 @@ export function Home() {
          <FlatList
          horizontal
          data={groups}
-         keyExtractor={(item) => item}
+         keyExtractor={item => item}
          renderItem={({ item })=>(
           <Group 
           name={item} 
-         isActive={groupSelected === item}
+         isActive={groupSelected.toLocaleUpperCase() === item.toLocaleUpperCase()}
          onPress={() => setGroupSelected(item)}
           />
          )}
@@ -27,16 +31,27 @@ export function Home() {
          my={10}
          maxH={10}
          />
-          <HStack>
-            <Heading>
-              Exercicios
+         <VStack flex={1} px={8}>
+          <HStack justifyContent="space-between" mb={5}>
+            <Heading color="gray.200" fontSize="md">
+              Exercícios
             </Heading>
 
-            <Text>
-              4
+            <Text color="gray.200" fontSize="sm" >
+              {exercises.length}
             </Text>
           </HStack>
-      
+
+            <FlatList 
+            data={exercises}
+            keyExtractor={ item => item}
+            renderItem={({item}) =>(      <ExerciseCard /> )}
+            showsVerticalScrollIndicator={false}
+            _contentContainerStyle={{paddingBottom: 20}}
+            />
+
+          </VStack>
+
         </VStack>
     )
 }
