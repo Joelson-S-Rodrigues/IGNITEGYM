@@ -1,0 +1,14 @@
+import { Center, Heading, Text } from 'native-base';
+
+type Props = {
+    title: string;
+}
+export function ScreenHeader({title}: Props) {
+    return(
+        <Center bg="gray.400" pb={6} pt={16}>
+          <Heading color="gray.200" fontSize="xl">
+            {title}
+          </Heading>
+        </Center>
+    );
+}
