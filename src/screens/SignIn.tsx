@@ -9,7 +9,7 @@ import BackgroundImg from '@assets/background.png';
 
 import { Input } from "@components/Input";
 import { Button } from "@components/Button";
-export const WIDTH = "90%"
+export const WIDTH = "85%"
 
 export function SignIn() {
 
