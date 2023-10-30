@@ -13,6 +13,8 @@ import LogoSvg from '@assets/logo.svg';
 import { Input } from '@components/Input';
 import { Button } from '@components/Button';
 
+import { WIDTH } from './SignIn';
+
 export function SignUp() {
     const navigation = useNavigation();
 
@@ -45,24 +47,36 @@ export function SignUp() {
 
             <Input 
             placeholder="Nome"
+            w={WIDTH}
              />   
 
             <Input 
             keyboardType="email-address"
             placeholder="E-mail"
             autoCapitalize="none"
+            w={WIDTH}
              />   
+             
             <Input 
             placeholder="Senha"
             secureTextEntry
+            w={WIDTH}
             />   
-                <Button title="Criar e acessar"/>
+                <Button
+                w={WIDTH}
+                title="Criar e acessar"/>
 
             </Center>
            
            <Center mt={24}>
                 
-            <Button onPress={handleGoBack} title="Voltar para o login" variant="outline"/>
+                
+            <Button
+             w={WIDTH} 
+              onPress={handleGoBack}
+               title="Voltar para o login" 
+               variant="outline"
+               />
 
            </Center>
 

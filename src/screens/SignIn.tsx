@@ -1,5 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { VStack, Image, Text, Center, Heading, ScrollView } from "native-base";
+import { View} from 'react-native';
 
 import { AuthNavigatorRoutesProps } from '@routes/auth.routes';
 
@@ -8,12 +9,14 @@ import BackgroundImg from '@assets/background.png';
 
 import { Input } from "@components/Input";
 import { Button } from "@components/Button";
-
+export const WIDTH = "90%"
 
 export function SignIn() {
 
+  
   const navigation = useNavigation<AuthNavigatorRoutesProps>();
- 
+  
+
   function handleNewAccount() {
     navigation.navigate('signUp')
   }
@@ -23,7 +26,7 @@ export function SignIn() {
       contentContainerStyle={{ flexGrow: 1 }}
       showsVerticalScrollIndicator={false}
     >
-      <VStack flex={1}>
+      <VStack   flex={1}>
         <Image
           alt="Pessoas treinando na academia"
           position="absolute"
@@ -42,14 +45,22 @@ export function SignIn() {
           <Heading color="gray.100" fontFamily="heading" fontSize="xl" mb={6}>
             Acesse a sua conta
           </Heading>
-
+          
           <Input
             keyboardType="email-address"
             placeholder="E-mail"
             autoCapitalize="none"
+            w={WIDTH}
           />
-          <Input placeholder="Senha" secureTextEntry />
-          <Button title="Acessar" />
+          <Input 
+          placeholder="Senha"
+           secureTextEntry 
+           w={WIDTH}
+           />
+
+          <Button 
+           w={WIDTH}
+           title="Acessar" />
         </Center>
 
         <Center mt={24}>
@@ -60,6 +71,7 @@ export function SignIn() {
             onPress={handleNewAccount}
             title="Criar conta"
             variant="outline"
+            w={WIDTH}
           />
         </Center>
       </VStack>

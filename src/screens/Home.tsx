@@ -19,7 +19,6 @@ const navigation = useNavigation<AppNavigatorRoutesProps>();
   function handleOpenExerciseDetails() {
     navigation.navigate('exercise')
   }
-
     return (
         <VStack flex={1}>
           <HomeHeader />
@@ -31,13 +30,16 @@ const navigation = useNavigation<AppNavigatorRoutesProps>();
           <Group 
           name={item} 
          isActive={groupSelected.toLocaleUpperCase() === item.toLocaleUpperCase()}
-         onPress={() => setGroupSelected(item)}
+         onPress={() => setGroupSelected(item)
+        
+        }
           />
          )}
          showsVerticalScrollIndicator={false}
          _contentContainerStyle={{ px: 8}}
          my={10}
          maxH={10}
+         minH={10}
          />
          <VStack flex={1} px={8}>
           <HStack justifyContent="space-between" mb={5}>
