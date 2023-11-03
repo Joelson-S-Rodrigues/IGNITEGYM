@@ -1,6 +1,5 @@
-import { useNavigation } from "@react-navigation/native";
-import { VStack, Image, Text, Center, Heading, ScrollView } from "native-base";
-import { View} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { VStack, Image, Text, Center, Heading, ScrollView } from 'native-base';
 
 import { AuthNavigatorRoutesProps } from '@routes/auth.routes';
 
@@ -16,7 +15,7 @@ export function SignIn() {
   
   const navigation = useNavigation<AuthNavigatorRoutesProps>();
   
-
+  
   function handleNewAccount() {
     navigation.navigate('signUp')
   }

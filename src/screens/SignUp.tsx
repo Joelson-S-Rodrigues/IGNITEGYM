@@ -1,25 +1,35 @@
 import { useNavigation } from '@react-navigation/native';
-import { Center,
-    Image,
-    Text,
-    VStack,
-    Heading,
-    ScrollView
-} 
-from 'native-base';
+import { useForm, Controller } from 'react-hook-form';
+import { Center, Image, Text, VStack, Heading, ScrollView } from 'native-base';
 
-import BackgroundImg from '@assets/background.png';
-import LogoSvg from '@assets/logo.svg';
 import { Input } from '@components/Input';
 import { Button } from '@components/Button';
 
+import LogoSvg from '@assets/logo.svg';
+import BackgroundImg from '@assets/background.png';
+
 import { WIDTH } from './SignIn';
 
+type FormDataProps = {
+    name: string,
+    email: string,
+    password: string,
+    password_confirm: string
+}
+
+
 export function SignUp() {
+
     const navigation = useNavigation();
+
+    const { control, handleSubmit, formState: {errors} } = useForm<FormDataProps>();
 
     function handleGoBack() {
       navigation.goBack();
+    }
+
+    function handleSignUp({name, email, password, password_confirm}:FormDataProps) {
+        console.log({name, email, password, password_confirm});
     }
 
     return(
@@ -45,26 +55,82 @@ export function SignUp() {
             Crie a sua conta
             </Heading>  
 
-            <Input 
-            placeholder="Nome"
-            w={WIDTH}
-             />   
+        <Controller 
+            control={control}
+            name="name"
+            rules={{
+                required: 'Informe o nome'
+            }}
+            render={({field: {onChange, value}})=> (
+                <Input 
+                w={WIDTH}
+                placeholder="Nome"
+                onChangeText={onChange}
+                errorMessage={errors.name?.message}
+                value={value}
+                />   
+            )}
+            />
+        <Controller 
+                control={control}
+                name="email"
+                rules={{
+                    required: 'Informe o e-mail',
+                    pattern: {
+                        value:/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                        message: 'E-mail inválido'
+                    }
+                }}
+                render={({field: {onChange, value}})=> (
+                    <Input 
+                    w={WIDTH}
+                    keyboardType="email-address"
+                    placeholder="E-mail"
+                    autoCapitalize="none"
+                    onChangeText={onChange}
+                    errorMessage={errors.email?.message}
+                    value={value}
+                    />   
+                )}
+                />
+              
+        <Controller 
+                control={control}
+                name="password"
+                render={({field: {onChange, value}})=> (
+                    <Input 
+                    w={WIDTH}
+                    placeholder="Senha"
+                    secureTextEntry
+                    onChangeText={onChange}
+                    value={value}
+                    />   
+                )}
+                />
 
-            <Input 
-            keyboardType="email-address"
-            placeholder="E-mail"
-            autoCapitalize="none"
-            w={WIDTH}
-             />   
-             
-            <Input 
-            placeholder="Senha"
-            secureTextEntry
-            w={WIDTH}
-            />   
+          
+        <Controller 
+                control={control}
+                name="password_confirm"
+                render={({field: {onChange, value}})=> (
+                    <Input 
+                    w={WIDTH}
+                    placeholder="Confirme a senha"
+                    secureTextEntry
+                    onChangeText={onChange}
+                    value={value}
+                    returnKeyType="send"
+                    onSubmitEditing={handleSubmit(handleSignUp)}
+                    />   
+                )}
+
+                />
+        
                 <Button
                 w={WIDTH}
-                title="Criar e acessar"/>
+                title="Criar e acessar"
+                onPress={handleSubmit(handleSignUp)}
+                />
 
             </Center>
            
@@ -73,9 +139,8 @@ export function SignUp() {
                 
             <Button
              w={WIDTH} 
-              onPress={handleGoBack}
-               title="Voltar para o login" 
-               variant="outline"
+             title="Voltar para o login" 
+             variant="outline"
                />
 
            </Center>
