@@ -14,10 +14,10 @@ export function HomeHeader() {
             mr={4}
             />
             <VStack flex={1}> 
-            <Text fontSize="md"  color="gray.100">
+            <Text fontSize="md"  color="gray.100" fontFamily="heading">
                 Olá
             </Text>
-            <Heading fontSize="md" color="gray.100">
+            <Heading fontSize="md" color="gray.100" fontFamily="heading">
                 Joelson
             </Heading>
             </VStack>

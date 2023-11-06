@@ -33,7 +33,7 @@ const invalid = !!errorMessage || isInvalid;
         }}
         {...rest}
         />
-        <FormControl.ErrorMessage right={100} p={0}>
+        <FormControl.ErrorMessage _text={{color: "red.500"}} color="red.500">
             {errorMessage}
         </FormControl.ErrorMessage>
         </FormControl>
