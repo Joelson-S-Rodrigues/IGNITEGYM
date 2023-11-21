@@ -88,7 +88,7 @@ mobile
 Clonar o projeto
 
 ```bash
-https://github.com/Joelson-S-Rodrigues/IGNITEGYM.git
+https://github.com/Joelson-S-Rodrigues/ignitegym-api.git
 ```
 
 Entre no diretório do projeto
